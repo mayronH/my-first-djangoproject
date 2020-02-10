@@ -1,21 +1,53 @@
-<html lang="en">
+{% load static %}
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django Testes</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <style>
+        body {
+            background-color: #000;
+            color: rgb(185, 184, 184);
+        }
+        
+        h1 {
+            color: #fff;
+        }
+        
+        h2 {
+            font-size: 20px;
+        }
+        
+        h2 a {
+            color: #fff;
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>Django posts </h1>
-
-    {% for post in posts%}
-    <div>
-        <h2><a href="">{{ post.title }} </a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-        <p>published: {{ post.published_date }} - by: <small>{{ post.author }} </small></p>
+    <div class="container-fluid" id="posts">
+        <div class="container">
+            <div class="row titulo">
+                <h1>Django posts </h1>
+            </div>
+            <div class="row posts">
+                {% for post in posts%}
+                <div>
+                    <h2><a href="">{{ post.title }} </a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                    <p>published: {{ post.published_date }} - by: <small>{{ post.author }} </small></p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    {% endfor %}
 
 </body>
 
