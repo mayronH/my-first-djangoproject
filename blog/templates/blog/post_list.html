@@ -7,7 +7,15 @@
 </head>
 
 <body>
-    <h1>Somente um testezinho básico</h1>
+    <h1>Django posts </h1>
+
+    {% for post in posts%}
+    <div>
+        <h2><a href="">{{ post.title }} </a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <p>published: {{ post.published_date }} - by: <small>{{ post.author }} </small></p>
+    </div>
+    {% endfor %}
 
 </body>
 
