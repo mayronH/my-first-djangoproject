@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div>
     <div class="row titulo">
-        <h2>{{ post.title }}<a id="editar" class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h2>{{ post.title }} {% if user.is_authenticated %}
+            <a id="editar" class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a> {% endif %}
         </h2>
     </div>
     <p>{{ post.text|linebreaksbr }}</p>
