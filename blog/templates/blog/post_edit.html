@@ -1,17 +1,18 @@
-{% extends 'blog/base.html' %} {% block content %}
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <h1>Novo post:</h1>
-        </div>
-        <div class="row formulario">
-            <form method="POST" class="col-md-8 post-form">
-                {% csrf_token %} {{ form.as_p }}
-                <div class="btn-salvar">
-                    <button type="submit" class="save btn btn-default">Salvar</button>
-                </div>
-            </form>
+{% extends 'blog/base.html' %} 
+{% block content %}
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h1>Novo post:</h1>
+            </div>
+            <div class="row formulario">
+                <form method="POST" class="col-md-8 post-form">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="btn-salvar">
+                        <button type="submit" class="save btn btn-default">Salvar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
