@@ -14,3 +14,56 @@ h2 {
 h2 a {
     color: #fff;
 }
+
+#header {
+    display: flex;
+    justify-content: center;
+}
+
+#header a {
+    color: #fff;
+}
+
+#plus {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 30px;
+    padding-left: 25px;
+}
+
+#editar {
+    margin-left: 25px;
+    color: #fff;
+    background: none;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    background: none;
+    border: 2px dotted #fff;
+}
+
+textarea {
+    width: 100%;
+    background: none;
+    border: 2px dotted #fff;
+}
+
+.btn-salvar {
+    text-align: center;
+}
+
+.btn-salvar button {
+    background: none;
+    border: 1px dotted #fff;
+    color: #fff;
+}

@@ -1,6 +1,9 @@
 {% extends 'blog/base.html' %} {% block content %}
 <div>
-    <h2>{{ post.title }}</h2>
+    <div class="row titulo">
+        <h2>{{ post.title }}<a id="editar" class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        </h2>
+    </div>
     <p>{{ post.text|linebreaksbr }}</p>
     <p>published: {{ post.published_date }} - by: <small>{{ post.author }} </small></p>
 </div>

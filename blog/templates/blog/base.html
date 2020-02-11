@@ -13,11 +13,14 @@
 </head>
 
 <body>
+    <div class="page-header" id="header">
+        <a href="{% url 'post_list' %}">
+            <h1>Django posts</h1>
+        </a>
+        <a id="plus" href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
     <div class="container-fluid" id="posts">
         <div class="container">
-            <div class="row titulo">
-                <h1>Django posts</h1>
-            </div>
             <div class="row posts">
                 {% block content %} {% endblock %}
             </div>
