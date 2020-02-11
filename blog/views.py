@@ -51,7 +51,7 @@ def post_draft_list(request):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('post_list', pk=post.pk)
+    return redirect('post_list')
 
 
 def post_remove(request,pk):
