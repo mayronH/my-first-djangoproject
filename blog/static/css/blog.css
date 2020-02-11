@@ -1,5 +1,5 @@
 body {
-    background-color: #000;
+    background-color: #000000;
     color: rgb(185, 184, 184);
 }
 
@@ -15,26 +15,47 @@ h2 a {
     color: #fff;
 }
 
-#header {
+#main-nav {
+    background: #000000;
+    border: #000000;
+    float: right;
+}
+
+#menu {
+    background: #000000;
+    border: none!important;
+}
+
+header {
     display: flex;
     justify-content: center;
 }
 
-#header a {
+header span {
     color: #fff;
+    font-size: 32px;
 }
 
-#plus {
+
+/* #plus {
     color: #fff;
     font-size: 18px;
     margin-top: 30px;
     padding-left: 25px;
-}
+} */
 
-#editar {
-    margin-left: 25px;
+.custom-btn {
     color: #fff;
     background: none;
+}
+
+.botoes{
+    float: right;
+    margin: 15px 0px;
+}
+
+.botoes a{
+    margin: 0px 5px;
 }
 
 .formulario {

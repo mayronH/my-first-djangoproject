@@ -13,17 +13,41 @@
 </head>
 
 <body>
-    <div class="page-header" id="header">
-        <a href="{% url 'post_list' %}">
-            <h1>Django posts</h1>
-        </a>
-        {% if user.is_authenticated %}
-        <a id="plus" href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> {% endif %}
-    </div>
+    <header id="topo" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 hidden-sm hidden-xs">
+                    <a href="{% url 'post_list' %}">
+                        <h1>Django Posts</h1>
+                    </a>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="col-md-9 col-sm-12 col-xs-12 nav-links">
+                    <nav class="navbar navbar-default main-nav" id="main-nav" role="navigation">
+                        <div class="navbar-header">
+                            <button aria-label="Responsive menu navbar-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                                <span class="icon-bar" aria-hidden="true"></span>
+                                <span class="icon-bar" aria-hidden="true"></span>
+                                <span class="icon-bar" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav">
+                                <li><a id="plus" href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a></li>
+                                <li><a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
     <div class="container-fluid" id="posts">
         <div class="container">
             <div class="row posts">
-                {% block content %} {% endblock %}
+                {% block content %} 
+                {% endblock %}
             </div>
         </div>
     </div>
