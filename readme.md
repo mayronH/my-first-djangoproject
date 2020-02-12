@@ -14,7 +14,7 @@ Um simples blog baseado no tutorial de [Django Girls](https://djangogirls.org/).
 
 ## Built With
 
-* [Django](https://www.djangoproject.com) - The web framework used
+* [Django](https://www.djangoproject.com) - O framework usado
 
 
 ## Authors
