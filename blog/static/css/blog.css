@@ -75,9 +75,15 @@ header span {
     padding: 10px 15px;
 }
 
+.custom-btn:hover{
+    color: #fff;
+    background: none!important;
+}
+
 .formulario {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 label {
@@ -87,13 +93,13 @@ label {
 input {
     width: 100%;
     background: none;
-    border: 2px dotted #fff;
+    border: 1px solid #3f474e;
 }
 
 textarea {
     width: 100%;
     background: none;
-    border: 2px dotted #fff;
+    border: 1px solid #3f474e;
 }
 
 .btn-salvar {
@@ -102,7 +108,12 @@ textarea {
 
 .btn-salvar button {
     background: none;
-    border: 1px dotted #fff;
+    border-color: #3f474e;
+    color: #fff;
+}
+
+.btn-salvar button:hover{
+    background: none;
     color: #fff;
 }
 

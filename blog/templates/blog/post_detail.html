@@ -11,7 +11,7 @@
             {% else %}
                 <a class="btn btn-default custom-btn" href="{% url 'post_publish' pk=post.pk %}">Publish</a> 
             {% endif %} 
-            <span class="blue"> - by:</span><small> {{ post.author }} </small>
+            <span class="blue"> by:</span><small> {{ post.author }} </small>
         </p>
 
         {% if user.is_authenticated %}

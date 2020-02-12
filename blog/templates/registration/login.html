@@ -1,23 +1,26 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    {% if form.erros %}
-        <div class="alert custom-alert" role="alert">
-            Login/senha inválidos.
+<div class="container-fluid">
+    <div class="container">
+        <div class="row formulario">
+            {% if form.erros %}
+                <div class="alert custom-alert" role="alert">
+                    Login/senha inválidos.
+                </div>
+            {% endif %}
+            <form method="POST" action= "{% url 'login' %}" class="col-md-4 post-form">
+                {% csrf_token %}
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                <br><br>
+                <div class="btn-salvar">
+                    <button type="submit" class="save btn btn-default">Login</button>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}"/>
+            </form>
         </div>
-    {% endif %}
-    <form method="POST" action= "{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>
-        <input type="submit" value="login"/>
-        <input type="hidden" name="next" value="{{ next }}"/>
-    </form>
+    </div>
+</div>
 {% endblock %}
