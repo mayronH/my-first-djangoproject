@@ -1,26 +1,29 @@
 {% extends 'blog/base.html' %} 
 {% block content %}
-    <div>
-        <div class="row titulo">
-            <h2>{{ post.title }}</h2>
-            {% if user.is_authenticated %}
-                <div class="botoes">
-                    <a class="btn btn-default custom-btn" href="{% url 'post_edit' pk=post.pk %}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <a class="btn btn-default custom-btn" href="{% url 'post_remove' pk=post.pk %}">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </a>
-                </div> 
-            {% endif %}
+    <div class="post">
+        <div class="post-titulo">
+            <h1>{{ post.title }}</h1>
         </div>
         <p>{{ post.text|linebreaksbr }}</p>
         <p>
             {% if post.published_date %} 
-                published: {{ post.published_date }} 
+                <span class="blue">published:</span> {{ post.published_date }} 
             {% else %}
                 <a class="btn btn-default custom-btn" href="{% url 'post_publish' pk=post.pk %}">Publish</a> 
             {% endif %} 
-            - by: <small>{{ post.author }} </small></p>
+            <span class="blue"> - by:</span><small> {{ post.author }} </small>
+        </p>
+
+        {% if user.is_authenticated %}
+            <div class="botoes">
+                <a class="btn btn-default custom-btn" href="{% url 'post_edit' pk=post.pk %}">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a class="btn btn-default custom-btn" href="{% url 'post_remove' pk=post.pk %}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div> 
+        {% endif %}
+
     </div>
 {% endblock %}

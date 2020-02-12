@@ -17,11 +17,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    <a href="{% url 'post_list' %}">
-                        <h1>Django Posts</h1>
-                    </a>
+                    <div class="logo">
+                        <a href="{% url 'post_list' %}">
+                            <span class="z">Z</span>
+                            <span class="h">H</span>
+                        </a>
+                    </div>
                 </div>
-                {% if user.is_authenticated %}
                 <div class="col-md-9 col-sm-12 col-xs-12 nav-links">
                     <nav class="navbar navbar-default main-nav" id="main-nav" role="navigation">
                         <div class="navbar-header">
@@ -33,19 +35,31 @@
                         </div>
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
-                                <li><a id="plus" href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a></li>
-                                <li><a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a></li>
+                                {% if user.is_authenticated %}
+                                    <li><a id="plus" href="{% url 'post_new' %}" class="top-menu">
+                                        New Post
+                                    </a></li>
+                                    <li><a href="{% url 'post_draft_list' %}" class="top-menu">
+                                        Draft List
+                                    </a></li>
+                                    <li><a href="{% url 'logout' %}" class="top-menu">
+                                        Logout
+                                    </a></li>
+                                {% else %}
+                                    <li><a href="{% url 'login' %}" class="top-menu">
+                                        Login
+                                    </a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </nav>
                 </div>
-                {% endif %}
             </div>
         </div>
     </header>
     <div class="container-fluid" id="posts">
         <div class="container">
-            <div class="row posts">
+            <div class="row">
                 {% block content %} 
                 {% endblock %}
             </div>

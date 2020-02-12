@@ -1,14 +1,16 @@
 {% extends 'blog/base.html' %} 
 {% block content %}
     {% for post in posts %}
-        <div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} </a></h2>
+        <div class="post">
+            <div class="post-titulo">
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} </a></h1>
+            </div>
             <p>{{ post.text|truncatechars:200 }}</p>
             <p>
                 {% if post.published_date %} 
-                    published: {{ post.published_date }} - 
+                <span class="blue">published:</span> {{ post.published_date }} 
                 {% endif %}
-                by: <small>{{ post.author }} </small>
+                <span class="blue"> - by:</span><small> {{ post.author }} </small>
             </p>
         </div>
     {% endfor %} 
