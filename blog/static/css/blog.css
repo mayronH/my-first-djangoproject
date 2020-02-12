@@ -58,12 +58,6 @@ header span {
     outline: 1px solid #3f474e;
     outline-offset: -10px;
 }
-/* #plus {
-    color: #fff;
-    font-size: 18px;
-    margin-top: 30px;
-    padding-left: 25px;
-} */
 
 .botoes{
     display: flex;

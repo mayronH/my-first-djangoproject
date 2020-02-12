@@ -6,7 +6,7 @@ Um simples blog baseado no tutorial de [Django Girls](https://djangogirls.org/).
 
 - [X] Inserção e manipulação dos posts.
 - [X] Adição e exclusão de comentários.
-- [X] CSS.
+- [ ] Responsividade.
 - [ ] Upload de imagens.
 - [ ] Menus laterais agrupando posts por data.
 - [ ] Pesquisa por title.
