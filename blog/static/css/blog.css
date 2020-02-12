@@ -75,8 +75,18 @@ header span {
     padding: 10px 15px;
 }
 
-.custom-btn:hover{
-    color: #fff;
+.btn-default:focus {
+    color: #fff!important;
+    background: none!important;
+}
+
+.btn-default:hover {
+    color: #fff!important;
+    background: none!important;
+}
+
+.btn-default:active {
+    color: #fff!important;
     background: none!important;
 }
 
@@ -112,11 +122,6 @@ textarea {
     color: #fff;
 }
 
-.btn-salvar button:hover{
-    background: none;
-    color: #fff;
-}
-
 .blue{
     color: #006d98;
 }
@@ -138,6 +143,30 @@ textarea {
     color: #fff;
 }
 
+.comments{
+    border-top: 1px dashed #3f474e;
+    margin-top: 30px;
+}
+
+.comment{
+    padding: 40px;
+}
+
+.btn-comment{
+    padding: 10px 40px 0 40px;
+    float: right;
+}
+
+.comment .botoes .custom-btn{
+    font-size: 8px;
+    padding: 8px 6px;
+}
+
+
+
+#formcomment{
+    display: none;
+}
 
 @media only screen and (max-width: 767px){
     header{
