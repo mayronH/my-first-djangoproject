@@ -38,11 +38,17 @@ header {
     display: flex;
     justify-content: center;
     background: #1d2127;
+    position: fixed;
+    width: 100%;
 }
 
 header span {
     color: #fff;
     font-size: 32px;
+}
+
+#posts{
+    padding-top: 80px;
 }
 
 .post{
