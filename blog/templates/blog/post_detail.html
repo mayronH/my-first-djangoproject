@@ -4,6 +4,9 @@
         <div class="post-titulo">
             <h1>{{ post.title }}</h1>
         </div>
+        <div class="imagem-principal">
+            <img src="{{ post.post_image.url }}" class="img-responsive">
+        </div>
         <p>{{ post.text|linebreaksbr }}</p>
         <p>
             {% if post.published_date %} 

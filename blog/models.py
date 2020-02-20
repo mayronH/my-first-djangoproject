@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-
+from django.utils.safestring import mark_safe
 # Create your models here.
 
 class Post(models.Model):
@@ -10,6 +10,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    post_image = models.ImageField(upload_to='images/', default='images/default.png')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -20,6 +21,12 @@ class Post(models.Model):
 
     def approved_comments(self):
         return self.comments.filter(approved_comment=True)
+
+    def thumbnail(self):
+        return mark_safe('<img src="{url}" height="{height}"/>'.format(
+            url = self.post_image.url,
+            height = 250,
+        ))
 
 
 class Comment(models.Model):

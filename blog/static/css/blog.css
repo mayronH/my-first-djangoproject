@@ -65,9 +65,9 @@ header span {
     outline-offset: -10px;
 }
 
-.post-form{
+/* .post-form{
     z-index: -1;
-}
+} */
 
 .botoes{
     display: flex;
@@ -172,10 +172,14 @@ textarea {
     padding: 8px 6px;
 }
 
-
-
 #formcomment{
     display: none;
+}
+
+.imagem-principal{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
 }
 
 @media only screen and (max-width: 767px){
