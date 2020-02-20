@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeroHora</title>
+    <title>HomePage</title>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
 
 </head>
 
@@ -16,7 +18,7 @@
     <header id="topo" class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="logo">
                         <a href="{% url 'post_list' %}">
                             <span class="z">Z</span>
@@ -24,7 +26,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-9 col-sm-12 col-xs-12 nav-links">
+                <div class="col-md-9 col-sm-9 col-xs-6 nav-links">
                     <nav class="navbar navbar-default main-nav" id="main-nav" role="navigation">
                         <div class="navbar-header">
                             <button aria-label="Responsive menu navbar-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
@@ -65,7 +67,9 @@
             </div>
         </div>
     </div>
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         function show() {
             var x = document.getElementById("formcomment");
