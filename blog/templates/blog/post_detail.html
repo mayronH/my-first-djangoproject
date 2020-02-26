@@ -53,7 +53,23 @@
                 </div>
             {% endfor %}
             <div class="btn-comment">
-                <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-default custom-btn" >Novo Comentário</a>
+                <!-- <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-default custom-btn" >Novo Comentário</a> -->
+                <a class="toggle btn btn-default custom-btn" href="#comentario">Novo Comentário</a>
+            </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="row formulario" id="comentario">
+                <form method="POST" class="col-md-12 post-form">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="btn-salvar">
+                        <button type="submit" class="save btn btn-default">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

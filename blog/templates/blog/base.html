@@ -76,14 +76,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
-        function show() {
-            var x = document.getElementById("formcomment");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
+        var show = function(element){
+            element.style.display = 'block';
+        };
+
+        var hide = function(element){
+            element.style.display = 'none';
+        };
+
+        var toggle = function(element){
+            if(window.getComputedStyle(element).diplay==='block'){
+                hide(element);
+            }else{
+                show(element);
             }
-        }
+        };
+        document.addEventListener('click', function(event){
+            if(!event.target.classList.contains('toggle')) return;
+            event.preventDefault();
+            var content = document.querySelector(event.target.hash);
+            if(!content) return;
+            toggle(content);
+
+        },false);
     </script>
 </body>
 
