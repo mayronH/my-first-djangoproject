@@ -182,6 +182,29 @@ textarea {
     margin-bottom: 25px;
 }
 
+#searchForm{
+    margin-top: 10px;
+}
+
+#searchForm input{
+    border: #3f474e;
+    background: none;
+    color: #fff;
+}
+
+.btn-search{
+    position: absolute;
+    height: 25px;
+    right: 15;
+    background: none;
+    border: none;
+}
+
+.btn-search span{
+    font-size: 15;
+    color: #b9b8b8;
+}
+
 @media only screen and (max-width: 767px){
     header{
         display: block;

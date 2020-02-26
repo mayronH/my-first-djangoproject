@@ -51,6 +51,12 @@
                                         Login
                                     </a></li>
                                 {% endif %}
+                                <li><a><form id="searchForm" action="{% url 'post_search' %}" method="GET">
+                                    <input type="text" name="search" placeholder="Search">
+                                    <button class="btn-search" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </form></a></li>
                             </ul>
                         </div>
                     </nav>

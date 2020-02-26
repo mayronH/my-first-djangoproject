@@ -4,7 +4,7 @@ from .models import Post, Comment
 from .form import PostForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .filters import PostFilter
+from django.db.models import Q
 
 # Create your views here.
 
@@ -88,6 +88,8 @@ def comment_remove(request,pk):
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
 
-def post_filter(request):
-    filter = PostFilter(request.GET, queryset=Post.objects.all())
-    return render(request, 'blog/filter.html', {'filter': filter})
+def post_search(request):
+    query = request.GET.get('search')
+    posts = Post.objects.filter(
+        Q(title__icontains=query) | Q(text__icontains=query))
+    return render(request, 'blog/post_list.html', {'posts' : posts})

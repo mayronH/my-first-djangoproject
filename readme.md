@@ -23,4 +23,4 @@ Um simples blog baseado no tutorial de [Django Girls](https://djangogirls.org/).
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+* [MIT](https://choosealicense.com/licenses/mit/)
