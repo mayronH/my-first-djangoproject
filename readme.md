@@ -9,7 +9,7 @@ Um simples blog baseado no tutorial de [Django Girls](https://djangogirls.org/).
 - [X] Responsividade.
 - [X] Upload de imagens.
 - [ ] Menus laterais agrupando posts por data.
-- [ ] Pesquisa por title.
+- [X] Pesquisa por title.
 
 
 ## Built With
