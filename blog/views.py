@@ -7,14 +7,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .filters import PostFilter
+from datetime import datetime, timedelta
 
 # Create your views here.
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    filter = PostFilter(request.GET, queryset=Post.objects.all())
-    return render(request, 'blog/post_list.html', {'posts' : posts, 'filter': filter})
-
+    return render(request, 'blog/post_list.html', {'posts' : posts})
 
 def post_detail(request,pk):
     post = get_object_or_404(Post, pk = pk)
@@ -75,7 +74,6 @@ def post_remove(request,pk):
     post.delete()
     return redirect('post_list')
 
-
 def add_comment_to_post(request,pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST" :
@@ -88,7 +86,6 @@ def add_comment_to_post(request,pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
-
 
 @login_required
 def comment_approve(request, pk):
@@ -110,4 +107,5 @@ def post_search(request):
 
 def post_filter(request):
     filter = PostFilter(request.GET, queryset=Post.objects.all())
+    query = request.GET.get('date_range')
     return render(request, 'blog/filter.html', {'filter': filter})
