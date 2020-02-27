@@ -6,12 +6,14 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
+from .filters import PostFilter
 
 # Create your views here.
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts' : posts})
+    filter = PostFilter(request.GET, queryset=Post.objects.all())
+    return render(request, 'blog/post_list.html', {'posts' : posts, 'filter': filter})
 
 
 def post_detail(request,pk):
@@ -105,3 +107,7 @@ def post_search(request):
     posts = Post.objects.filter(
         Q(title__icontains=query) | Q(text__icontains=query))
     return render(request, 'blog/post_list.html', {'posts' : posts})
+
+def post_filter(request):
+    filter = PostFilter(request.GET, queryset=Post.objects.all())
+    return render(request, 'blog/filter.html', {'filter': filter})
