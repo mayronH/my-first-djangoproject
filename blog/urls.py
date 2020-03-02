@@ -14,4 +14,5 @@ urlpatterns = [
     path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),
     path('post/search/', views.post_search, name='post_search'),
     path('post/filter/', views.post_filter, name='post_filter'),
+    path('post/<dt>/', views.post_date, name='post_date'),
 ]

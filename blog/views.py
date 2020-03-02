@@ -106,6 +106,25 @@ def post_search(request):
     return render(request, 'blog/post_list.html', {'posts' : posts})
 
 def post_filter(request):
-    filter = PostFilter(request.GET, queryset=Post.objects.all())
-    query = request.GET.get('date_range')
-    return render(request, 'blog/filter.html', {'filter': filter})
+    # filter = PostFilter(request.GET, queryset=Post.objects.all())
+    days = request.GET.get('date_range')
+    time = datetime.today() - timedelta(days=int(days))
+    posts = Post.objects.filter(published_date__gte=time)
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_group_by_months(request):
+    posts = Post.objects.all().dates('published_date','month')
+    return {'posts_month' : posts}
+
+def post_date(request, dt):
+
+    data = datetime.strptime(dt, '%Y-%m-%d')
+
+    posts = Post.objects.filter(
+        published_date__year__gte=data.year,
+        published_date__month__gte=data.month,
+        published_date__year__lte=data.year,
+        published_date__month__lte=data.month
+        ).order_by('published_date')
+    # posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})

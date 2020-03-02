@@ -192,6 +192,19 @@ textarea {
     color: #fff;
 }
 
+.form-menu select{
+    border: #3f474e;
+    background: none;
+    color: #fff;
+    width: 100%;
+}
+
+.form-menu select option {
+    background: #1d2127;
+    color: #fff;
+    border: #3f474e;
+}
+
 .btn-search{
     position: absolute;
     height: 25px;
@@ -348,6 +361,17 @@ textarea {
     display: block;
     -webkit-transform: translate3d(-100px,0,0);
     -webkit-transition: all .35s ease-in-out;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 @media only screen and (max-width: 767px){
