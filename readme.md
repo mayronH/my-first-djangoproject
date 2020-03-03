@@ -8,8 +8,9 @@ Um simples blog baseado no tutorial de [Django Girls](https://djangogirls.org/).
 - [X] Adição e exclusão de comentários.
 - [X] Responsividade.
 - [X] Upload de imagens.
-- [ ] Menus laterais agrupando posts por data.
+- [X] Menus laterais agrupando posts por data.
 - [X] Pesquisa por title.
+- [ ] Outras aplicações como enquetes, filtros de pesquisa completo etc
 
 
 ## Built With
