@@ -10,7 +10,7 @@ Um simples blog baseado no tutorial de [Django Girls](https://djangogirls.org/).
 - [X] Upload de imagens.
 - [X] Menus laterais agrupando posts por data.
 - [X] Pesquisa por title.
-- [ ] Outras aplicações como enquetes, filtros de pesquisa completo etc
+- [ ] Outras aplicações como enquetes, filtros de pesquisa completo etc.
 
 
 ## Built With
