@@ -207,7 +207,7 @@ textarea {
 .btn-search {
     position: absolute;
     height: 25px;
-    right: 15;
+    margin-left: -25px;
     background: none;
     border: none;
 }

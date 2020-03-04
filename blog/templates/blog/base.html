@@ -1,4 +1,4 @@
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="pt-br">
 
 <head>
@@ -11,6 +11,33 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <script src="https://cdn.tiny.cloud/1/6lmj0ll1zjy2rnzoik4b55aor4utbfnchxlptf81bqkrhbhd/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#id_text',
+            plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            imagetools_cors_hosts: ['picsum.photos'],
+            menubar: 'file edit view insert format tools table help',
+            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+            toolbar_sticky: true,
+            skin: 'oxide-dark',
+            content_css: 'dark',
+            autosave_ask_before_unload: true,
+            autosave_interval: "30s",
+            autosave_prefix: "{path}{query}-{id}-",
+            autosave_restore_when_empty: false,
+            autosave_retention: "2m",
+            image_advtab: true,
+            importcss_append: true,
+            image_caption: true,
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+            noneditable_noneditable_class: "mceNonEditable",
+            toolbar_drawer: 'sliding',
+            contextmenu: "link image imagetools table",
+        });
+    </script>
 </head>
 
 <body>
@@ -63,8 +90,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-sm-9">
-                    {% block content %}
-                    {% endblock %}
+                    {% block content %} {% endblock %}
                 </div>
                 <div class="col-md-2 col-sm-3 col-sidebar">
                     <div class="sidebar-nav">
@@ -106,14 +132,16 @@
                                         </div>
                                     </li>
 
-                                    <li><a>
+                                    <li>
+                                        <a>
                                             <form id="searchForm" action="{% url 'post_search' %}" method="GET">
                                                 <input type="text" name="search" placeholder="Search">
                                                 <button class="btn-search" type="submit">
                                                     <span class="glyphicon glyphicon-search"></span>
                                                 </button>
                                             </form>
-                                        </a></li>
+                                        </a>
+                                    </li>
                                     <!-- <li><a><form action="{% url 'post_filter' %}" method="GET" class="form-menu">
                                     <select name="date_range" onchange="this.form.submit()" id="id_date_range">
                                         <option value="" selected="">---------</option>                      

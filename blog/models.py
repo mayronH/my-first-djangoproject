@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.safestring import mark_safe
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class Post(models.Model):
@@ -11,6 +12,8 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     post_image = models.ImageField(upload_to='images/', default='images/default.png')
+    headline = models.CharField(max_length=200, default='Plain headline for a plain post')
+    tags = TaggableManager()
 
     def publish(self):
         self.published_date = timezone.now()

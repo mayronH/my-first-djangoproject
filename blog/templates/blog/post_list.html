@@ -5,7 +5,10 @@
             <div class="post-titulo">
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }} </a></h1>
             </div>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <div class="imagem-principal">
+                <img src="{{ post.post_image.url }}" class="img-responsive">
+            </div>
+            <p>{{ post.headline|linebreaksbr }}</p>
             <p>
                 <span class="blue">published:</span> {{ post.published_date }}
                 <span class="blue"> by:</span><small> {{ post.author }} </small>
