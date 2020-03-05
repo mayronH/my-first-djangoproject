@@ -15,4 +15,5 @@ urlpatterns = [
     path('post/search/', views.post_search, name='post_search'),
     path('post/filter/', views.post_filter, name='post_filter'),
     path('post/<dt>/', views.post_date, name='post_date'),
+    path('post/tags/<slug>', views.post_tags, name="post_tags"),
 ]

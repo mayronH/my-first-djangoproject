@@ -262,7 +262,13 @@ textarea {
     color: #009dda;
 }
 
+.tags{
+    padding: 12px;
+}
 
+.custom-badge{
+    background-color: #009dda;
+}
 /* make sidebar nav vertical */
 @media (min-width: 768px) {
     .sidebar-nav .navbar .navbar-collapse {

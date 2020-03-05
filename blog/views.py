@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .filters import PostFilter
 from datetime import datetime, timedelta
+from django.template.defaultfilters import slugify
+from taggit.models import Tag
 
 # Create your views here.
 
@@ -37,6 +39,7 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.slug = slugify(post.title)
             post.save()
             form.save_m2m()
             return redirect('post_detail', pk=post.pk)
@@ -52,6 +55,7 @@ def post_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.slug = slugify(post.title)
             post.save()
             form.save_m2m()
             return redirect('post_detail', pk=pk)
@@ -130,3 +134,13 @@ def post_date(request, dt):
         ).order_by('published_date')
     # posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_tags(request,slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    posts = Post.objects.filter(tags=tag)
+
+    return render(request, 'blog/post_list.html', {'tag': tag, 'posts': posts})
+
+def common_tags(request):
+    common_tags = Post.tags.most_common()[:8]
+    return {'common_tags' : common_tags}

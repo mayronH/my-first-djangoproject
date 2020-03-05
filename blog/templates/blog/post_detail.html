@@ -19,7 +19,7 @@
 
         <div class="tags">
             {% for tag in post.tags.all %}
-                <a href="" class="mr-1 badge badge-info">#{{ tag }}</a>
+                <a href="{% url 'post_tags' tag.slug %}" class="mr-1 badge custom-badge">{{ tag }}</a>
             {% endfor %}
         </div>
 

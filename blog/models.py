@@ -13,6 +13,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     post_image = models.ImageField(upload_to='images/', default='images/default.png')
     headline = models.CharField(max_length=200, default='Plain headline for a plain post')
+    slug = models.SlugField(max_length=200, default='title')
     tags = TaggableManager()
 
     def publish(self):

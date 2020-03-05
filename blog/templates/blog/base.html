@@ -142,6 +142,11 @@
                                             </form>
                                         </a>
                                     </li>
+                                    <div class="tags">
+                                        {% for ct in common_tags %}
+                                            <a href="{% url 'post_tags' ct.slug %}" class="mr-1 badge custom-badge">{{ct}}</a>
+                                        {% endfor %}
+                                    </div>
                                     <!-- <li><a><form action="{% url 'post_filter' %}" method="GET" class="form-menu">
                                     <select name="date_range" onchange="this.form.submit()" id="id_date_range">
                                         <option value="" selected="">---------</option>                      
