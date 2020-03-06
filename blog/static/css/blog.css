@@ -41,9 +41,9 @@ header {
     background: #1d2127;
     position: -webkit-sticky;
     position: sticky;
+    z-index: 5;
     top: 0;
     width: 100%;
-    z-index: 5;
 }
 
 header span {
@@ -253,6 +253,10 @@ textarea {
 .navbar.navbar-expand-lg.navbar-light{
     background: #1d2127;
     color: #b9b8b8 !important;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
 .navbar.navbar-expand-lg.navbar-light a{
@@ -262,6 +266,7 @@ textarea {
 #menu-toggle span{
     color: #b9b8b8 !important; 
 }
+
 
 #sidebar-wrapper {
     background: #1d2127;
@@ -285,6 +290,9 @@ textarea {
 
 #sidebar-wrapper .list-group {
     width: 15rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 7rem;
 }
 
 #page-content-wrapper {
