@@ -1,4 +1,5 @@
-<!DOCTYPE html> {% load static %}
+<!DOCTYPE html> 
+{% load static %}
 <html lang="pt-br">
 
 <head>
@@ -55,13 +56,15 @@
                     <li><a href="#" class="list-group-item list-group-item-action">Quem somos</a></li>
                 </ul>
                 <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
-                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-suitcase"></i> Categorias</a>
+                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-suitcase"></i>
+                    Categorias</a>
                 <ul class="collapse list-unstyled" id="submenu1">
                     <li><a href="#" class="list-group-item list-group-item-action">Posts</a></li>
                     <li><a href="#" class="list-group-item list-group-item-action">Enquetes</a></li>
                 </ul>
                 <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
-                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-calendar-alt"></i> Meses</a>
+                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-calendar-alt"></i>
+                    Meses</a>
                 <ul class="collapse list-unstyled" id="submenu2">
                     {% for post in posts_month %}
                     <li><a href="{% url 'post_date' dt=post %}"
@@ -76,6 +79,11 @@
                         </button>
                     </form>
                 </a>
+                <div class="redes">
+                    <a class="rede"><i class="fab fa-twitter"></i></a>
+                    <a class="rede"><i class="fab fa-facebook"></i></a>
+                    <a class="rede"><i class="fab fa-github"></i></a>
+                </div>
                 <div class="tags">
                     {% for ct in common_tags %}
                     <a href="{% url 'post_tags' ct.slug %}" class="mr-1 badge custom-badge">{{ct}}</a> {% endfor %}

@@ -238,12 +238,29 @@ textarea {
 
 .tags {
     padding: 12px;
+    display: flex;
+    justify-content: center;
 }
 
 .custom-badge {
     background-color: #009dda!important;
     font-weight: 600;
     color: #fff!important;
+    padding: 7px;
+}
+
+.redes{
+    padding: 20px;
+    justify-content: center;
+    margin-top: 1px;
+    border-top: 1px solid #3f474e;
+    border-bottom: 1px solid #3f474e;
+    display: flex;
+    justify-content: center;
+}
+
+.rede{
+    padding: 0 10px;
 }
 
 #posts{
@@ -281,6 +298,10 @@ textarea {
 #sidebar-wrapper a{
     background: #1d2127;
     color: #b9b8b8;
+}
+
+#sidebar-wrapper a:hover{
+    color: #009dda;
 }
 
 #sidebar-wrapper .sidebar-heading {

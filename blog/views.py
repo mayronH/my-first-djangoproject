@@ -9,12 +9,22 @@ from django.db.models import Q
 from .filters import PostFilter
 from datetime import datetime, timedelta
 from django.template.defaultfilters import slugify
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 
 # Create your views here.
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(posts_list, 8)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/post_list.html', {'posts' : posts})
 
 def post_detail(request,pk):
@@ -142,5 +152,5 @@ def post_tags(request,slug):
     return render(request, 'blog/post_list.html', {'tag': tag, 'posts': posts})
 
 def common_tags(request):
-    common_tags = Post.tags.most_common()[:8]
+    common_tags = Post.tags.most_common()[:12]
     return {'common_tags' : common_tags}
