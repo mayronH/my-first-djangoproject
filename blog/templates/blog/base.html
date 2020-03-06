@@ -8,15 +8,17 @@
 
     <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/699c9781af.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
     <script src="https://cdn.tiny.cloud/1/6lmj0ll1zjy2rnzoik4b55aor4utbfnchxlptf81bqkrhbhd/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
+
     <script>
         tinymce.init({
-            selector: '#id_text',
+            selector: '.textP',
             plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
             imagetools_cors_hosts: ['picsum.photos'],
             menubar: 'file edit view insert format tools table help',
@@ -41,137 +43,106 @@
 </head>
 
 <body>
-    <header id="topo" class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="logo">
-                        <a href="{% url 'post_list' %}">
-                            <span class="z">Z</span>
-                            <span class="h">H</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-6 nav-links">
-                    <nav class="navbar navbar-default main-nav" id="main-nav" role="navigation">
-                        <div class="navbar-header">
-                            <button aria-label="Responsive menu navbar-toggle" type="button" class="navbar-toggle"
-                                data-toggle="collapse" data-target="#menu">
-                                <span class="icon-bar" aria-hidden="true"></span>
-                                <span class="icon-bar" aria-hidden="true"></span>
-                                <span class="icon-bar" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="menu">
-                            <ul class="nav navbar-nav">
-                                {% if user.is_authenticated %}
-                                <li><a id="plus" href="{% url 'post_new' %}" class="top-menu">
-                                        New Post
-                                    </a></li>
-                                <li><a href="{% url 'post_draft_list' %}" class="top-menu">
-                                        Draft List
-                                    </a></li>
-                                <li><a href="{% url 'logout' %}" class="top-menu">
-                                        Logout
-                                    </a></li>
-                                {% else %}
-                                <li><a href="{% url 'login' %}" class="top-menu">
-                                        Login
-                                    </a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="container-fluid" id="posts">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-sm-9">
-                    {% block content %} {% endblock %}
-                </div>
-                <div class="col-md-2 col-sm-3 col-sidebar">
-                    <div class="sidebar-nav">
-                        <div class="navbar navbar-default" id="sidemenu-nav" role="navigation">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target=".sidebar-navbar-collapse">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <span class="visible-xs navbar-brand">Sidebar menu</span>
-                            </div>
-                            <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li class="sidebar-dropdown">
-                                        <a href="#">
-                                            <span>Categorias</span>
-                                        </a>
-                                        <div class="sidebar-submenu" style="display: none;">
-                                            <ul class="">
-                                                <li><a href="#">Posts</a></li>
-                                                <li><a href="#">Enquetes</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="sidebar-dropdown">
-                                        <a href="#">
-                                            <span>Meses</span>
-                                        </a>
-                                        <div class="sidebar-submenu" style="display: none;">
-                                            <ul>
-                                                {% for post in posts_month %}
-                                                <li><a href="{% url 'post_date' dt=post %}">{{ post|date:'F Y' }}</a>
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </li>
+    <div class="d-flex" id="wrapper">
 
-                                    <li>
-                                        <a>
-                                            <form id="searchForm" action="{% url 'post_search' %}" method="GET">
-                                                <input type="text" name="search" placeholder="Search">
-                                                <button class="btn-search" type="submit">
-                                                    <span class="glyphicon glyphicon-search"></span>
-                                                </button>
-                                            </form>
-                                        </a>
-                                    </li>
-                                    <div class="tags">
-                                        {% for ct in common_tags %}
-                                            <a href="{% url 'post_tags' ct.slug %}" class="mr-1 badge custom-badge">{{ct}}</a>
-                                        {% endfor %}
-                                    </div>
-                                    <!-- <li><a><form action="{% url 'post_filter' %}" method="GET" class="form-menu">
-                                    <select name="date_range" onchange="this.form.submit()" id="id_date_range">
-                                        <option value="" selected="">---------</option>                      
-                                        <option value="0">Hoje</option>                      
-                                        <option value="1">Ontem</option>
-                                        <option value="7">Últimos 7 dias</option>
-                                        <option value="30">Este mês</option>
-                                        <option value="365">Este ano</option>
-                                    </select>
-                                </form></a></li> -->
-                                </ul>
-                            </div>
-                            <!--/.nav-collapse -->
-                        </div>
-                    </div>
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading"><br><br><br></div>
+            <div class="list-group list-group-flush">
+                <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-eye"></i> Sobre</a>
+                <ul class="collapse list-unstyled" id="submenu3">
+                    <li><a href="#" class="list-group-item list-group-item-action">Quem somos</a></li>
+                </ul>
+                <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-suitcase"></i> Categorias</a>
+                <ul class="collapse list-unstyled" id="submenu1">
+                    <li><a href="#" class="list-group-item list-group-item-action">Posts</a></li>
+                    <li><a href="#" class="list-group-item list-group-item-action">Enquetes</a></li>
+                </ul>
+                <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+                    class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-calendar-alt"></i> Meses</a>
+                <ul class="collapse list-unstyled" id="submenu2">
+                    {% for post in posts_month %}
+                    <li><a href="{% url 'post_date' dt=post %}"
+                            class="list-group-item list-group-item-action">{{ post|date:'F Y' }}</a></li>
+                    {% endfor %}
+                </ul>
+                <a class="list-group-item list-group-item-action">
+                    <form id="searchForm" action="{% url 'post_search' %}" method="GET">
+                        <input type="text" name="search" placeholder="Search">
+                        <button class="btn-search" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </a>
+                <div class="tags">
+                    {% for ct in common_tags %}
+                    <a href="{% url 'post_tags' ct.slug %}" class="mr-1 badge custom-badge">{{ct}}</a> {% endfor %}
                 </div>
             </div>
         </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="btn btn-default custom-btn navbar-dark" id="menu-toggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="ml-3 logo">
+                    <a class="navbar-brand" href="{% url 'post_list' %}">
+                        <span class="z">Z</span>
+                        <span class="h">H</span>
+                    </a>
+                </div>
+
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" id="plus" href="{% url 'post_new' %}" class="top-menu">
+                                New Post
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'post_draft_list' %}" class="top-menu">
+                                Draft List
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}" class="top-menu">
+                                Logout
+                            </a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}" class="top-menu">
+                                Login
+                            </a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid" id="posts">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
 
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     <script>
         var show = function (element) {
             element.style.display = 'block';
@@ -198,16 +169,9 @@
         }, false);
     </script>
     <script>
-        $(".sidebar-dropdown > a").click(function () {
-            $(".sidebar-submenu").slideUp(200);
-            if ($(this).parent().hasClass("active")) {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this).parent().removeClass("active");
-            } else {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this).next(".sidebar-submenu").slideDown(200);
-                $(this).parent().addClass("active");
-            }
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
         });
     </script>
 </body>

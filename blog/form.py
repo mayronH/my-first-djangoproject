@@ -14,7 +14,7 @@ class PostForm(forms.ModelForm):
             'headline': "Chamada:",
         }
         widgets = {
-          'text': forms.Textarea(attrs={'rows':40, 'cols':40}),
+          'text': forms.Textarea(attrs={'rows':40, 'cols':40, 'class': 'textP'}),
         }
 
 

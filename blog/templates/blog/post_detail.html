@@ -10,30 +10,33 @@
         {{ post.text| safe }}
         <p>
             {% if post.published_date %} 
-                <span class="blue">published:</span> {{ post.published_date }} 
+                <span class="blue">published:</span> {{ post.published_date|date:'d F Y' }} 
             {% else %}
                 <a class="btn btn-default custom-btn" href="{% url 'post_publish' pk=post.pk %}">Publish</a> 
             {% endif %} 
             <span class="blue"> by:</span><small> {{ post.author }} </small>
         </p>
 
-        <div class="tags">
-            {% for tag in post.tags.all %}
-                <a href="{% url 'post_tags' tag.slug %}" class="mr-1 badge custom-badge">{{ tag }}</a>
-            {% endfor %}
+        <div class="row">
+            <div class="col-md-6 tags">
+                {% for tag in post.tags.all %}
+                    <a href="{% url 'post_tags' tag.slug %}" class="mr-1 badge custom-badge">{{ tag }}</a>
+                {% endfor %}
+            </div>
+    
+            {% if user.is_authenticated %}
+                <div class="col-md-6 botoes">
+                    <a class="btn btn-default custom-btn" href="{% url 'post_edit' pk=post.pk %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-default custom-btn" href="{% url 'post_remove' pk=post.pk %}">
+                        <i class="fas fa-eraser"></i>
+                    </a>
+                </div> 
+            {% endif %}
         </div>
 
-        {% if user.is_authenticated %}
-            <div class="botoes">
-                <a class="btn btn-default custom-btn" href="{% url 'post_edit' pk=post.pk %}">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-                <a class="btn btn-default custom-btn" href="{% url 'post_remove' pk=post.pk %}">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-            </div> 
-        {% endif %}
-        <div class="row comments">
+        <div class="row comments justify-content-between">
             {% for comment in post.comments.all %}
                 {% if user.is_authenticated or comment.approved_comment %}
                     <div class="comment">
@@ -44,10 +47,10 @@
                         {% if not comment.approved_comment %}
                             <div class="botoes">
                                 <a class="btn btn-default custom-btn" href="{% url 'comment_remove' pk=comment.pk %}">
-                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <i class="fas fa-times"></i>
                                 </a>
                                 <a class="btn btn-default custom-btn" href="{% url 'comment_approve' pk=comment.pk %}">
-                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <i class="fas fa-check"></i>
                                 </a>
                             </div>
                         {% endif %}
