@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from django.template.defaultfilters import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
+from meta.views import Meta
 
 # Create your views here.
 
@@ -19,13 +20,19 @@ def post_list(request):
     page = request.GET.get('page', 1)
 
     paginator = Paginator(posts_list, 8)
+    
+    meta = Meta(
+        use_title_tag = True,
+        title = "ZeroHora - HomePage",
+        description = "Blog feito em django para testes e aprendizado.",
+    )
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    return render(request, 'blog/post_list.html', {'posts' : posts})
+    return render(request, 'blog/post_list.html', {'posts' : posts, 'meta': meta})
 
 def post_detail(request,pk):
     post = get_object_or_404(Post, pk = pk)
@@ -40,7 +47,19 @@ def post_detail(request,pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'blog/post_detail.html', {'post': post, 'form': form})
+
+    meta = Meta(
+        use_title_tag = True,
+        title = post.title,
+        description = post.headline,
+        
+    )
+    context = {
+        'post': post,
+        'form': form,
+        'meta': meta
+    }
+    return render(request, 'blog/post_detail.html', context)
 
 @login_required
 def post_new(request):
