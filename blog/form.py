@@ -2,7 +2,6 @@ from django import forms
 from .models import Post, Comment
 
 class PostForm(forms.ModelForm):
-
     class Meta:
         model = Post
         fields = ('title', 'headline', 'post_image', 'tags', 'text', )
@@ -13,10 +12,9 @@ class PostForm(forms.ModelForm):
             'text': "Texto:",
             'headline': "Chamada:",
         }
-        widgets = {
-          'text': forms.Textarea(attrs={'rows':40, 'cols':40, 'class': 'textP'}),
-        }
-
+    text = forms.CharField(widget = forms.Textarea(
+        attrs={'rows':40, 'cols':40, 'class': 'textTiny'}
+    ), required  = False)
 
 class CommentForm(forms.ModelForm):
 

@@ -238,18 +238,19 @@ textarea {
 
 .tags {
     padding: 12px;
-    display: flex;
-    justify-content: center;
 }
 
 .custom-badge {
-    background-color: #009dda!important;
+    background-color: #009dda !important;
     font-weight: 600;
-    color: #fff!important;
+    color: #fff !important;
     padding: 7px;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 3px;
 }
 
-.redes{
+.redes {
     padding: 20px;
     justify-content: center;
     margin-top: 1px;
@@ -259,15 +260,15 @@ textarea {
     justify-content: center;
 }
 
-.rede{
+.rede {
     padding: 0 10px;
 }
 
-#posts{
+#posts {
     padding: 40px;
 }
 
-.navbar.navbar-expand-lg.navbar-light{
+.navbar.navbar-expand-lg.navbar-light {
     background: #1d2127;
     color: #b9b8b8 !important;
     position: -webkit-sticky;
@@ -276,12 +277,12 @@ textarea {
     z-index: 5;
 }
 
-.navbar.navbar-expand-lg.navbar-light a{
+.navbar.navbar-expand-lg.navbar-light a {
     color: #b9b8b8 !important;
 }
 
-#menu-toggle span{
-    color: #b9b8b8 !important; 
+#menu-toggle span {
+    color: #b9b8b8 !important;
 }
 
 
@@ -295,12 +296,12 @@ textarea {
     transition: margin .25s ease-out;
 }
 
-#sidebar-wrapper a{
+#sidebar-wrapper a {
     background: #1d2127;
     color: #b9b8b8;
 }
 
-#sidebar-wrapper a:hover{
+#sidebar-wrapper a:hover {
     color: #009dda;
 }
 
@@ -324,6 +325,37 @@ textarea {
     margin-left: 0;
 }
 
+.pagination{
+    justify-content: center;
+}
+
+.pagination .content{
+    background-color: #1d2127;
+    padding: 15px 20px;
+    outline: 1px solid #3f474e;
+    outline-offset: -5px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: rgb(185, 184, 184);
+    padding: 4px 5px;
+}
+
+.pagination a:hover, .pagination a:focus, .pagination a:active{
+    color: #009dda;
+}
+
+.pagination-number {
+    color: rgb(185, 184, 184);
+    font-size: 16pt;
+}
+
+.pagination-number:hover,
+.pagination-current {
+    color: #009dda;
+}
+
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
@@ -336,6 +368,10 @@ textarea {
 
     #wrapper.toggled #sidebar-wrapper {
         margin-left: -15rem;
+    }
+
+    #posts {
+        padding: 0px 15px;
     }
 }
 
