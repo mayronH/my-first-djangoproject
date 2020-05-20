@@ -24,14 +24,14 @@ from django.contrib.sitemaps import Sitemap
 from blog.models import Post
 from django.utils import timezone
 
+from django.contrib.auth import views as auth_views
+
 class BlogSitemap(Sitemap):
-    changefreq = "monthly"
+    changefreq = "never"
     priority = 0.5
 
     def items(self):
         return Post.objects.all()
-
-
 
 sitemaps = {
     'sitmaps' : BlogSitemap
@@ -42,7 +42,8 @@ urlpatterns = [
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     path('', include('blog.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('^', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
