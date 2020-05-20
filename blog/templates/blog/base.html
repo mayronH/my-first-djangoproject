@@ -21,8 +21,7 @@
                 </ul>
                 <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
                     class="list-group-item list-group-item-action dropdown-toggle"><i class="fas fa-calendar-alt"></i>
-                    Meses</a>+
-
+                    Meses</a>
                 <ul class="collapse list-unstyled" id="submenu2">
                     {% for post in posts_month %}
                     <li><a href="{% url 'post_date' dt=post %}"
