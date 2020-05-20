@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'taggit',
     'meta',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [

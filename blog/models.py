@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 from taggit.managers import TaggableManager
+from django.urls import reverse
 # Create your models here.
 
 class Post(models.Model):
@@ -31,6 +32,10 @@ class Post(models.Model):
             url = self.post_image.url,
             height = 250,
         ))
+
+    def get_absolute_url(self):
+        return reverse('post_detail',
+                       args=[str(self.pk)])
 
 
 
