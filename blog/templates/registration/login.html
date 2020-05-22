@@ -14,6 +14,9 @@
                 {{ form.username }}
                 {{ form.password.label_tag }}
                 {{ form.password }}
+                <div class="forgot">
+                    <a href="{% url 'password_reset' %}">Esqueci a minha senha</a>
+                </div>
                 <br><br>
                 <div class="btn-salvar">
                     <button type="submit" class="save btn btn-default">Login</button>
